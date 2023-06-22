@@ -52,7 +52,7 @@ Your command should look like this:
 ./share/AlsavoCtrl/AlsavoCtrl -s xxxxxxxxxxxx -l xyzxyz
 ```
 The output looks like this:
-
+![Output](image/output.png)
 You can also try to contact the heatpump locally without going through the Alsavo server with the following command:
 ```
 ./share/AlsavoCtrl/AlsavoCtrl -s <YourSerialNumber> -l <YourPassword> -a <YourHeatpumpLocalIP> -p 1194
