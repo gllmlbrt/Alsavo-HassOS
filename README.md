@@ -11,28 +11,50 @@ Go to the folder and Edit the loguru.cpp file: change LOGURU_STACKTRACES in line
 So it reads: ‘#define LOGURU_STACKTRACES 0’
 Now you need to have access to Home Assistant CLI via “terminal& SSH” which is installed as a standard add-on on HassOS. Further details here: https://github.com/hassio-addons/addon-ssh
 Once in CLI, run the following commands one after the other.
-1.	cd share/AlsavoCtrl/
-2.	apk add cmake make musl-dev build-base linux-headers curl-dev
+1.	
+```
+cd share/AlsavoCtrl/
+```
+3.
+```
+apk add cmake make musl-dev build-base linux-headers curl-dev
+```
 There is should run an install of cmake and success at 100%
-3.	cmake --clean-first -DCMAKE_EXE_LINKER_FLAGS="-static -Os" .
+5.	
+```
+cmake --clean-first -DCMAKE_EXE_LINKER_FLAGS="-static -Os" .
+```
 It should conclude with:
-"--Generating done
+```
+--Generating done
 --Build files have been written to :/root/share/AlsavoCtrl”
-4.	make
+```
+6.
+```
+make
+```
 You should have received a successful notification:
+```
 [100%] Built target AlsavoCtrl
+```
 B.	Running AlsavoCtrl and connect to your heatpump
 You should now be able to test your newly built function by entering the command:
+```
 ./share/AlsavoCtrl/AlsavoCtrl -s <YourSerialNumber> -l <YourPassword>
+```
 You can find the registered serial by tapping on the “Alsavo Pro” logo on the top right corner when in the control UI of the Heatpump on the App.
 The password is the one set-up in when registering the heatpump in the app.
 
 Your command should look like this:
+```
 ./share/AlsavoCtrl/AlsavoCtrl -s xxxxxxxxxxxx -l xyzxyz
+```
 The output looks like this:
 
 You can also try to contact the heatpump locally without going through the Alsavo server with the following command:
+```
 ./share/AlsavoCtrl/AlsavoCtrl -s <YourSerialNumber> -l <YourPassword> -a <YourHeatpumpLocalIP> -p 1194
+```
 The output should be identical.
 C.	Running AlsavoCtrl in NodeRed and publishing to MQTT
 Now that you have that sorted, we can run the command from within NodeRed, parse the output and publish it to your MQTT server.
