@@ -65,11 +65,14 @@ You can also try to contact the heatpump locally without going through the Alsav
 The output should be identical.
 # C.	Running AlsavoCtrl in NodeRed and publishing to MQTT
 Now that you have that sorted, we can run the command from within NodeRed, parse the output and publish it to your MQTT server.
-For you need to have NodeRed installed and MQTT installed and running, both are standard add-ons from the add-on store of Home Assistant.  I will not in get into details here, and there are plenty of tutorials out there helping with setting this all up.
+For that you need to have NodeRed installed and MQTT installed and running, both are standard add-ons from the add-on store of Home Assistant.  I will not in get into details here, there are plenty of tutorials out there helping with setting this all up.
 Within NodeRed, we will create two main processes:
-1.	One set of flow which will run the AlsavoCtrl Command at regular interval, and parses the output to send the data in the right format to MQTT,
-2.	Another series of flow to receive command and execute the AlsavoCtrl function to control the heatpump and re-run the command to publish the response to MQTT.
+1.	One set of flows which will run the AlsavoCtrl Command at regular interval, and parses the output to send the data in the right format to MQTT,
+2.	Another series of flows to receive command and execute the AlsavoCtrl function to control the heatpump and re-run the command to publish the response to MQTT.
 The fastest for a new user to NodeRed is to import the flows I created here: `AlsavoCtrlNodeRedFlow.txt`, and change with your Serial Number and Password. And add local IP and port for local connect (my preference).
+
+Also remmember to set up your MQTT server information in NodeRed.
+
 Once imported in NodeRed, it should look like that:
 
 ![NodeRed](image/NodeRedFlow.png)
