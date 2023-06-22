@@ -99,7 +99,7 @@ Various plots using plotly:
 ![Plots](image/plotly.png)
 
 # Reflections:
-I am sure there are much smarter ways to run the AlsavoCtrl command and parse the output to MQTT, the docker method is one example. One might also have considered re-writing the AlsavoCtrl function altogether. But I did not investigate this as it grew organically without a clear initial plan. And here we are, I hope it helps.
+I am sure there are much smarter ways to run the AlsavoCtrl command and parse the output to MQTT, the docker method is one example. One might also have considered re-writing the AlsavoCtrl function altogether instead of the clumsy and inelegant string parsing in NodeRed. But I did not investigate this until it was too late as it grew organically without a clear initial plan. And here we are, I hope it helps.
 
 Ultimately the cleanest way to do all this is a proper Home Assistant custom integration (HACS), which would be set-up through a config flow process. I do not have the skills to do that, but I would be of course willing to help anyone with the knowledge for that process.
 
