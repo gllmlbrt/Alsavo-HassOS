@@ -1,0 +1,87 @@
+mqtt:
+  climate:
+    - name: "pool_heatpump"
+      qos: 0
+      availability:
+        - topic: "sh/outdoor/climate/sh_pool_heatpump/ReturnCode/code"
+          payload_available: "0"
+          payload_not_available: "255"
+      power_command_topic: "sh/outdoor/climate/sh_pool_heatpump/cmnd/powerset"
+      modes:
+        - heat
+        - cool
+        - auto
+        - "off"
+      mode_state_topic: "sh/outdoor/climate/sh_pool_heatpump/Config/SystemConfigBitmask1"
+      mode_state_template: >-
+        {% set values = { '57':'heat',  '56':'cool', '58':'auto', '49':'heat', '48':'cool', '50':'auto', '24':'off', '25':'off', '26':'off', '16':'off', '17':'off', '18':'off'} %}
+        {{ values[value] if value in values.keys() else 'off' }}
+      mode_command_topic: "sh/outdoor/climate/sh_pool_heatpump/cmnd/modeset"
+      current_temperature_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/WaterInTemp"
+      current_temperature_template: >-
+        {{ value | round(1) }}
+      min_temp: 6
+      max_temp: 30
+      precision: 0.1
+      temperature_state_topic: "sh/outdoor/climate/sh_pool_heatpump/Config/HeatingModeTargetTemp"
+      temperature_state_template: >-
+        {{ value | float | multiply(0.1) | round(1) }}
+      temperature_command_topic: "sh/outdoor/climate/sh_pool_heatpump/cmnd/tempset"
+      preset_modes:
+        - "Silent"
+        - "Smart"
+        - "Powerful"
+      preset_mode_command_topic: "sh/outdoor/climate/sh_pool_heatpump/cmnd/powermodeset"
+      preset_mode_state_topic: "sh/outdoor/climate/sh_pool_heatpump/Config/PowerMode"
+      preset_mode_value_template: >-
+        {% set values = { '0':'Silent',  '1':'Smart', '2':'Powerful'} %}
+        {{ values[value] if value in values.keys() else 'N/A' }}
+      retain: true
+  sensor:
+    - name: "Pool Heatpump Water In Temp"
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/WaterInTemp"
+      unit_of_measurement: "°C"
+      value_template: >-
+        {{ value | round(1) }}
+      device_class: temperature
+    - name: "Pool Heatpump Water Out Temp"
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/WaterOutTemp"
+      unit_of_measurement: "°C"
+      value_template: >-
+        {{ value | round(1) }}
+      device_class: temperature
+    - name: "Pool Heatpump Air Temp"
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/AmbientTemp"
+      unit_of_measurement: "°C"
+      value_template: >-
+        {{ value | round(1) }}
+      device_class: temperature
+    - name: "Pool Heatpump Fan Speed"
+      icon: mdi:fan
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/FanSpeed"
+      unit_of_measurement: "rpm"
+      value_template: >-
+        {{ value | round(0) }}
+    - name: "Pool Heatpump Exhaust Valve Opening"
+      icon: mdi:valve
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/ElectronicExhaustValveOpening"
+      state_class: measurement
+      value_template: >-
+        {{ value | round(0) }}
+    - name: "Pool Heatpump Compressor Frequency"
+      icon: mdi:car-turbocharger
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/CompressorFrequency"
+      device_class: frequency
+      unit_of_measurement: "Hz"
+      value_template: >-
+        {{ value | round(0) }}
+    - name: "Pool Heatpump Compressor Speed Setting"
+      icon: mdi:car-turbocharger
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/CompressorSpeedSetting"
+      value_template: >-
+        {{ value | round(0) }}
+    - name: "Pool Heatpump Device Status Code"
+      icon: mdi:information-outline
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/DeviceStatusCode"
+      value_template: >-
+        {{ value | round(0) }}

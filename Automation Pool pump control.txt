@@ -1,0 +1,81 @@
+alias: Pool pump control
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - sensor.pool_heatpump_device_status_code
+    to: "32"
+  - platform: state
+    entity_id:
+      - sensor.pool_heatpump_device_status_code
+    to: "48"
+  - platform: state
+    entity_id:
+      - sensor.pool_heatpump_device_status_code
+    to: "36"
+  - platform: state
+    entity_id:
+      - sensor.pool_heatpump_device_status_code
+    to: "4"
+condition: []
+action:
+  - service: switch.turn_on
+    target:
+      entity_id:
+        - switch.sh_pool_pow
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - choose:
+      - conditions:
+          - condition: not
+            conditions:
+              - condition: or
+                conditions:
+                  - condition: state
+                    entity_id: sensor.pool_heatpump_device_status_code
+                    state: "0"
+                  - condition: state
+                    entity_id: sensor.pool_heatpump_device_status_code
+                    state: "16"
+        sequence:
+          - wait_for_trigger:
+              - platform: state
+                entity_id:
+                  - sensor.pool_heatpump_device_status_code
+                to: "0"
+                for:
+                  hours: 0
+                  minutes: 1
+                  seconds: 0
+              - platform: state
+                entity_id:
+                  - sensor.pool_heatpump_device_status_code
+                to: "16"
+                for:
+                  hours: 0
+                  minutes: 1
+                  seconds: 0
+          - service: switch.turn_off
+            target:
+              entity_id: switch.sh_pool_pow
+            data: {}
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: sensor.pool_heatpump_device_status_code
+                state: "0"
+              - condition: state
+                entity_id: sensor.pool_heatpunp_device_status_code
+                state: "16"
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: switch.sh_pool_pow
+            data: {}
+    default: []
+mode: restart
