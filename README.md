@@ -109,7 +109,7 @@ See automation yaml extract: `Automation Pool pump control.txt`
 Now all there is to do is to turn on and off the heat pump and I think I nailed the codes for which the circulation pump needs to be on. I have run this for the last 2 years, and have had no issue, including frost protection, when the air temperature gets below 4 degrees, the water circulation is needed every so often to control the temperature of the water.
 Naturally, for this to work you need Wi-Fi ! Which means in case of connectivity loss, in very cold weather, then your heat pump can freeze and get damaged!
 
-# F.	Credits
+# Credits
 Main contribution: 
 https://github.com/strandborg
 
