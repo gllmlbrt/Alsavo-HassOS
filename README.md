@@ -1,8 +1,9 @@
 # Alsavo-Hass
-Usage of strandborg/AlsavoCtrl to integrate the Alsavo (Swin&amp;Fun water heatpumps) further into home assistant via command and MQTT publishing and integration of HVAC entity
+Usage of strandborg/AlsavoCtrl to integrate the Alsavo (Swim&amp;Fun water heatpumps) further into home assistant via command and MQTT publishing and integration of HVAC entity, allowing full control and monitoring via Home Assistant lovelace interface.
 
 The process involves three main steps which are detailed below. To go through, you must have first set up your wifi enable heatpump through the AlsavoPro app and set-up a password.
-This tutorial shows how to compile and run AlsavoCtrl directly into the Home Assistant OS CLI. There is an alternative docker method to run it and publish to MQTT available here: https://hub.docker.com/r/peterhaislund/alsavo_status but not detailed in this repo. If you use the docker method there, and succeed in publishing to MQTT, you can skip to Step D.
+This tutorial shows how to compile and run AlsavoCtrl directly into the Home Assistant OS CLI.
+
 # A.	Installing and running AlsavoCtrl on Home Assistant OS
 Download the whole source code and place it on your Hass server. https://github.com/strandborg/AlsavoCtrl.git, unzip in a folder called AlsavoCtrl.
 For this example I chose to place the folder on the Hass server under \share\AlsavoCtrl but you may do that from any location on your server accessible from CLI.
