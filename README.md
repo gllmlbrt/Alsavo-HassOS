@@ -8,8 +8,10 @@ This tutorial shows how to compile and run AlsavoCtrl directly into the Home Ass
 Download the whole source code and place it on your Hass server. https://github.com/strandborg/AlsavoCtrl.git, unzip in a folder called AlsavoCtrl.
 For this example I chose to place the folder on the Hass server under \share\AlsavoCtrl but you may do that from any location on your server accessible from CLI.
 You can do that via Samba Share, or SSH and edit the file opening it with WordPad or similar.
+
 Go to the folder and Edit the loguru.cpp file: change LOGURU_STACKTRACES in line 97 to 0.
 So it reads: ‘#define LOGURU_STACKTRACES 0’
+
 Now you need to have access to Home Assistant CLI via “terminal& SSH” which is installed as a standard add-on on HassOS. Further details here: https://github.com/hassio-addons/addon-ssh
 Once in CLI, run the following commands one after the other.
 
