@@ -1,5 +1,5 @@
 # Alsavo-Hass
-Usage of [strandborg/AlsavoCtrl](https://github.com/strandborg/AlsavoCtrl) to integrate the Alsavo & Zealux (Swim&amp;Fun water heatpumps) further into home assistant via command and MQTT publishing and integration of HVAC entity, allowing full control and monitoring via Home Assistant lovelace interface.
+Usage of [strandborg/AlsavoCtrl](https://github.com/strandborg/AlsavoCtrl) to integrate the Alsavo & Zealux (Swim&amp;Fun in Scnadinavia) water heatpumps further into home assistant via command and MQTT publishing and integration of HVAC entity, allowing full control and monitoring via Home Assistant lovelace interface.
 
 The process involves four main steps (A through D) which are detailed below. To go through, you must have first set up your wifi enable heatpump through the AlsavoPro app and set-up a password.
 This tutorial shows how to compile and run AlsavoCtrl directly into the Home Assistant OS CLI.
