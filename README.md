@@ -87,7 +87,7 @@ If successful, you should be able to see the following published in you MQTT ser
 From here we enter into more standard Home Assistant functions. 
 Starting with creating a MQTT HVAC entity. https://www.home-assistant.io/integrations/climate.mqtt/
 
-The yaml code is `mqttHVAC and sensors.txt`
+The yaml code is `mqttHVAC and sensors.yaml`
 
 Copy that part in your configuration.yaml
 It creates a climate.name entity and should look like that:
@@ -111,7 +111,7 @@ Ultimately the cleanest way to do all this is rewriting the whole thing in pytho
 # F.	Bonus: Control circulation pump from the heat pump
 So one can wire the circulation pump to effectively have the heat pump supply power to the pump when needed for the heat pump. But by doing so I lose the ability to control the circulation/filter pump on a schedule for other reasons.
 So I decided to run the water circulation with a sonoff POW R2 switch and an automation which tun-on/off as the heat pump needs, based on the published “Device Status Code”.
-See automation yaml extract: `Automation Pool pump control.txt`
+See automation yaml extract: `Automation Pool pump control.yaml`
 Now all there is to do is to turn on and off the heat pump and I think I nailed the codes for which the circulation pump needs to be on. I have run this for the last 2 years, and have had no issue, including frost protection, when the air temperature gets below 4 degrees, the water circulation is needed every so often to control the temperature of the water.
 Naturally, for this to work you need Wi-Fi ! Which means in case of connectivity loss, in very cold weather, then your heat pump can freeze and get damaged!
 
