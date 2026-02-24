@@ -1,6 +1,12 @@
 mqtt:
   climate:
-    - name: "pool_heatpump"
+    - name: "Pool Heatpump"
+      unique_id: pool_heatpump_mqtt
+      device:
+        manufacturer: Alsavo/Zealux
+        model: "Swim&Fun 1402 13,5 kW"
+        serial_number: "Serial_no"
+        identifiers: "MAC"
       qos: 0
       availability:
         - topic: "sh/outdoor/climate/sh_pool_heatpump/ReturnCode/code"
@@ -85,3 +91,31 @@ mqtt:
       state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/DeviceStatusCode"
       value_template: >-
         {{ value | round(0) }}
+    - name: "Pool Heatpump System Running Code"
+      icon: mdi:information
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/SystemRunningCode"
+      value_template: >-
+        {{ value | round(0) }}
+    - name: "Pool Heatpump System Status Code"
+      icon: mdi:information
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/SystemStatusCode"
+      value_template: >-
+        {{ value | round(0) }}
+  binary_sensor:
+    - name: "Pool Heatpump Connectivity"
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/ReturnCode/code"
+      payload_on: "0"
+      payload_off: "255"
+      device_class: connectivity
+    - name: "Pool Heatpump Alarm"
+      unique_id: AlarmCode1PoolHeatpump
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/AlarmCode1"
+      payload_on: "4"
+      payload_off: "0"
+      device_class: problem
+    - name: "Pool Heatpump Antifreeze Protection"
+      unique_id: AlarmCode2PoolHeatpump
+      state_topic: "sh/outdoor/climate/sh_pool_heatpump/Status/AlarmCode2"
+      payload_on: "64"
+      payload_off: "0"
+      device_class: cold
